@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Enabley Varejo · Treinamento no bolso</title>
+<meta name="description" content="Treinamento que acontece onde o colaborador do varejo está: no celular. Menos tempo fora da loja, menos custo de integração, resposta certa no meio do atendimento com o AI Companion da Enabley.">
+<meta name="theme-color" content="#0F0824">
+<link rel="icon" href="assets/logos/enabley-icon.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700;1,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#hero" aria-label="Enabley, início">
+    <img src="assets/logos/enabley.webp" alt="Enabley" width="160" height="50">
+  </a>
+  <div class="nav__axis" aria-hidden="true">
+    <span class="nav__axis-v">↕</span><span class="nav__axis-h">↔</span>
+  </div>
+  <a class="btn btn--accent nav__cta" href="https://enabley.com.br/" target="_blank" rel="noopener">Agendar demonstração</a>
+</header>
+
+<main id="conteudo">
+
+<!-- ============ ATO 1 · HERO (horizontal) ============ -->
+<section class="hx hero" id="hero" aria-label="AI Companion no celular do colaborador">
+  <div class="hx-stage hero__stage">
+
+    <div class="hero__bg" aria-hidden="true">
+      <div class="hero__glow"></div>
+      <div class="hero__words">NO CORREDOR <i>·</i> NO CAIXA <i>·</i> NO ESTOQUE <i>·</i> NO PROVADOR <i>·</i> NO CELULAR</div>
+    </div>
+
+    <div class="hx-track hero__track">
+      <div class="hp hp--intro">
+        <div class="hp__copy">
+          <p class="eyebrow"><span class="dot"></span> Enabley para o varejo</p>
+          <h1 class="hero__title">
+            <span class="line"><span>Treinamento</span></span>
+            <span class="line"><span>que cabe no</span></span>
+            <span class="line"><span><em>bolso</em> do seu time.</span></span>
+          </h1>
+          <p class="hero__lede">Seu colaborador não senta na frente de um computador. Ele está no corredor, no caixa, no estoque. Com o celular na mão.</p>
+        </div>
+      </div>
+
+      <div class="hp hp--photo">
+        <figure class="shot shot--tall">
+          <video data-loop src="assets/video/atacarejo-colab.mp4" poster="assets/video/atacarejo-colab.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Colaborador do Novo Atacarejo consulta o celular enquanto atende uma cliente"></video>
+          <figcaption><strong>Corredor 14, 10h12.</strong> Cliente com dúvida. Gerente no caixa.</figcaption>
+        </figure>
+        <p class="hp__aside">A dúvida aparece no meio do atendimento. A resposta precisa chegar ali também.</p>
+      </div>
+
+      <div class="hp hp--text">
+        <div class="hp__copy">
+          <h2 class="hp__big">Ele pergunta.<br><span class="hl">O AI Companion responde</span> com o manual da sua empresa.</h2>
+          <ul class="ticks">
+            <li>Responde só com o conteúdo oficial atribuído ao cargo dele</li>
+            <li>Mostra a fonte de cada resposta</li>
+            <li>Funciona no app com a marca da sua rede</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="hp hp--photo hp--photo-b">
+        <figure class="shot shot--tall">
+          <video data-loop src="assets/video/atacarejo-gerente.mp4" poster="assets/video/atacarejo-gerente.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Atendimento no corredor do Novo Atacarejo com a loja cheia"></video>
+          <figcaption><strong>Sábado, 16h40.</strong> Cliente demonstrando possível atrito. Loja lotada.</figcaption>
+        </figure>
+      </div>
+
+      <div class="hp hp--end">
+        <div class="hp__copy">
+          <h2 class="hp__big">O treinamento acontece onde o colaborador está.<br><span class="hl">No celular.</span></h2>
+          <p class="hero__lede">Sem tirar ninguém da loja. Sem sala, sem deslocamento, sem esperar a próxima turma.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__chips" aria-hidden="true">
+      <span class="chip chip--a">Resposta em segundos</span>
+      <span class="chip chip--b">Fonte: Política de Trocas v4</span>
+      <span class="chip chip--c">Funciona offline no estoque</span>
+      <span class="chip chip--d">Login sem e-mail corporativo</span>
+      <span class="chip chip--e">25 idiomas</span>
+    </div>
+
+    <!-- iPhone com o AI Companion -->
+    <div class="phone-wrap" aria-label="Simulação de conversa no AI Companion" role="img">
+      <div class="phone-float">
+        <div class="phone" id="phone">
+          <div class="phone__btn phone__btn--a"></div><div class="phone__btn phone__btn--b"></div><div class="phone__btn phone__btn--c"></div>
+          <div class="phone__screen">
+            <div class="phone__island"></div>
+            <div class="phone__status"><b>9:41</b><span class="sig"><i></i><i></i><i></i><i></i></span></div>
+            <div class="app__head">
+              <img src="assets/logos/enabley-icon.webp" alt="" class="app__avatar">
+              <div>
+                <b>AI Companion</b>
+                <span class="app__sub" id="appSub">Responde com os conteúdos da sua loja</span>
+              </div>
+            </div>
+            <div class="app__msgs" id="msgs">
+              <div class="msg msg--hint show" id="hint">
+                Olá, Ana! 👋 Pergunte qualquer procedimento da loja.
+                <div class="sugg"><span>Troca sem nota</span><span>Abertura de caixa</span><span>Recebimento</span></div>
+              </div>
+              <div class="msg msg--me" id="q1"></div>
+              <div class="msg msg--ai" id="a1">
+                <p>Pode, sim. Pela Política de Trocas, siga assim:</p>
+                <ol>
+                  <li>Busque a compra pelo CPF ou cartão no PDV.</li>
+                  <li>Confira etiqueta, lacre e estado do produto.</li>
+                  <li>Troque por item igual ou de mesmo valor. Se for mais caro, a diferença vai pro caixa.</li>
+                  <li>Registre no PDV com o motivo “Troca sem cupom”.</li>
+                </ol>
+                <span class="src">📄 Política de Trocas · Lojas · v4</span>
+              </div>
+              <div class="msg msg--me" id="q2"></div>
+              <div class="msg msg--ai" id="a2">
+                <p>Perecível sem nota não tem troca. Se o cliente insistir, chame o líder de turno pelo rádio.</p>
+                <span class="src">📄 Manual de Frente de Loja · cap. 3</span>
+              </div>
+              <div class="msg msg--dots" id="dots"><i></i><i></i><i></i></div>
+            </div>
+            <div class="app__input">
+              <div class="app__field"><span id="typed"></span><span class="caret" id="caret"></span><span class="ph" id="ph">Pergunte ao AI Companion…</span></div>
+              <div class="app__send" id="send">↑</div>
+            </div>
+            <div class="phone__home"></div>
+          </div>
+        </div>
+      </div>
+      <p class="phone-note">Simulação. Procedimento ilustrativo.</p>
+    </div>
+
+    <div class="hx-progress" aria-hidden="true"><i></i></div>
+  </div>
+</section>
+
+<!-- ============ ATO 2 · DORES (vertical) ============ -->
+<section class="pain" id="dores">
+  <div class="wrap">
+    <h2 class="pain__title" data-split>Seu time aprende enquanto tudo acontece. <span class="soft">Ensine da melhor forma.</span></h2>
+
+    <div class="pain__grid">
+      <div class="pain__media">
+        <div class="pain__frame">
+          <video data-loop src="assets/video/varejo-roupas.mp4" poster="assets/video/varejo-roupas.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Vendedora organiza araras em uma loja de roupas"></video>
+        </div>
+        <div class="pain__stat reveal">
+          <b><span data-count="37">0</span>%</b>
+          <span>de rotatividade no varejo formal paulista no acumulado até junho de 2025, segundo a FecomercioSP. Quem entra precisa render rápido.</span>
+        </div>
+      </div>
+
+      <ol class="pain__list">
+        <li class="reveal">
+          <h3>Gente entra e sai o tempo todo</h3>
+          <p>Cada admissão reabre a mesma integração. Turma presencial, instrutor, deslocamento, folha paga sem venda.</p>
+          <p class="fix">Com a Enabley: trilha por cargo e loja, liberada no celular no primeiro dia.</p>
+        </li>
+        <li class="reveal">
+          <h3>O onboarding briga com o movimento</h3>
+          <p>Quando a loja enche, o treinamento é o primeiro a sair da agenda. E o novato aprende com quem estiver por perto.</p>
+          <p class="fix">Com a Enabley: pílulas de minutos, no intervalo, inclusive offline.</p>
+        </li>
+        <li class="reveal">
+          <h3>O gerente vira a central de dúvidas</h3>
+          <p>A mesma pergunta, dez vezes por dia, em cada unidade. E uma resposta diferente em cada loja.</p>
+          <p class="fix">Com a Enabley: o AI Companion responde com o material oficial, igual em toda a rede.</p>
+        </li>
+        <li class="reveal">
+          <h3>Mudou a campanha, o PDF ficou velho</h3>
+          <p>A matriz decide, o comunicado se perde no grupo de WhatsApp e a gôndola demora a mudar.</p>
+          <p class="fix">Com a Enabley: publica uma vez, chega por cargo e turno, e você vê quem leu.</p>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ATO 3 · LOGOS (horizontal) ============ -->
+<section class="hx logos" id="clientes" aria-label="Clientes que treinam com a Enabley">
+  <div class="hx-stage logos__stage">
+    <div class="logos__rows" aria-hidden="true">
+      <div class="logos__row logos__row--a"></div>
+      <div class="logos__row logos__row--b"></div>
+    </div>
+
+    <div class="hx-track logos__track">
+      <div class="lp lp--title">
+        <p class="eyebrow"><span class="dot"></span> Quem já faz</p>
+        <h2>Redes que tiraram o treinamento da sala e colocaram no <span class="hl">celular</span>.</h2>
+      </div>
+
+      <article class="lcard">
+        <div class="lcard__logo"><img src="assets/logos/c/novo-atacarejo.png" alt="Novo Atacarejo"></div>
+        <div class="viz viz--bars"><div class="bar"><span>Antes</span><i style="--v:1"></i><b>7 dias</b></div><div class="bar bar--hi"><span>Com Enabley</span><i style="--v:0.143"></i><b>1 dia</b></div></div>
+        <p class="lcard__num">7 dias <span>→</span> 1 dia</p>
+        <p class="lcard__txt">de integração. <b>86% menos tempo</b> até o novo colaborador estar na loja, com 6 mil admissões por ano.</p>
+      </article>
+
+      <article class="lcard">
+        <div class="lcard__logo"><img src="assets/logos/c/chillibeans.png" alt="Chilli Beans"></div>
+        <div class="viz viz--bars"><div class="bar"><span>Antes</span><i style="--v:0.25"></i><b>1x</b></div><div class="bar bar--hi"><span>Com Enabley</span><i style="--v:1"></i><b>4x</b></div></div>
+        <p class="lcard__num">+300%</p>
+        <p class="lcard__txt">de engajamento nos conteúdos e <b>83% menos tempo</b> para ver cada coleção nova, em mais de 1.000 pontos de venda.</p>
+      </article>
+
+      <article class="lcard">
+        <div class="lcard__logo"><img src="assets/logos/c/giraffas.png" alt="Giraffas"></div>
+        <div class="viz viz--bars"><div class="bar"><span>Antes</span><i style="--v:1"></i><b>90 dias</b></div><div class="bar bar--hi"><span>Com Enabley</span><i style="--v:0.333"></i><b>30 dias</b></div></div>
+        <p class="lcard__num">3 meses <span>→</span> 30 dias</p>
+        <p class="lcard__txt">para treinar franqueados em <b>+400 lojas</b>. De 3 cursos por ano para <b>3 por mês</b>, e de 4 para até 8 mudanças de cardápio por ano.</p>
+      </article>
+
+      <article class="lcard">
+        <div class="lcard__logo"><img src="assets/logos/c/dpaschoal.png" alt="DPaschoal"></div>
+        <div class="viz viz--grid" data-n="28" aria-hidden="true"></div>
+        <p class="lcard__num">28 mil</p>
+        <p class="lcard__txt">certificações emitidas em 2 anos, de balconistas a reparadores, com <b>270 cursos</b> criados pelo próprio time.</p>
+      </article>
+
+      <article class="lcard">
+        <div class="lcard__logo"><img src="assets/logos/c/vivo.png" alt="Vivo"></div>
+        <a class="viz viz--video" href="#videos" aria-label="Assistir ao case Vivo"><img src="assets/photos/thumb-vivo.jpg" alt=""><span class="viz__play">▶</span></a>
+        <p class="lcard__num lcard__num--sm">Case em vídeo</p>
+        <p class="lcard__txt">Ouça como a Vivo usa a Enabley para preparar quem atende na ponta. <a href="#videos">Assistir ↓</a></p>
+      </article>
+
+      <article class="lcard">
+        <div class="lcard__logo"><img src="assets/logos/c/msig.png" alt="MSIG"></div>
+        <div class="viz viz--dots" data-n="46" aria-hidden="true"></div>
+        <p class="lcard__num">46 países</p>
+        <p class="lcard__txt">atendidos a partir de <b>uma base única</b> de conteúdo, sem depender de sala de aula.</p>
+      </article>
+
+      <div class="lp lp--end">
+        <ul class="scale">
+          <li class="sc sc--users">
+            <div class="sc__viz"><div class="people"></div></div>
+            <b><span data-users>+1 milhão</span></b><span>de usuários ativos</span>
+          </li>
+          <li class="sc sc--globe">
+            <div class="sc__viz"><div class="globe"><div class="globe__map"></div><i class="ping"></i><i class="ping"></i><i class="ping"></i></div></div>
+            <b>+<span data-to="30">30</span></b><span>países</span>
+          </li>
+          <li class="sc sc--lang">
+            <div class="sc__viz"><div class="hello"><div class="hello__roll"><span>Olá</span><span>Hello</span><span>Hola</span><span>Bonjour</span><span>Ciao</span><span>Hallo</span><span>Olá</span></div></div></div>
+            <b><span data-to="25">25</span></b><span>idiomas</span>
+          </li>
+          <li class="sc sc--iso">
+            <div class="sc__viz"><svg class="shield" viewBox="0 0 48 56"><path class="shield__s" d="M24 3 L44 10 V27 C44 40 35 49 24 53 C13 49 4 40 4 27 V10 Z"/><path class="shield__c" d="M15 28 L22 35 L34 21"/></svg></div>
+            <b>ISO 27001</b><span>e GDPR</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="hx-progress" aria-hidden="true"><i></i></div>
+  </div>
+</section>
+
+<!-- ============ ATO 4 · DINHEIRO (vertical) ============ -->
+<section class="money" id="economia">
+  <div class="wrap">
+    <div class="money__head">
+      <h2 data-split>Onde o dinheiro <span class="hl">volta</span>.</h2>
+      <p class="lede reveal">Treinamento no celular não é só mais cômodo. Ele mexe em três linhas que já estão na sua planilha.</p>
+    </div>
+
+    <div class="leak" aria-hidden="true">
+      <div class="leak__tank"><div class="leak__fill"><span>R$</span><span>R$</span><span>R$</span><span>R$</span><span>R$</span><span>R$</span><span>R$</span><span>R$</span><span>R$</span><span>R$</span><span>R$</span><span>R$</span></div></div>
+      <div class="leak__holes">
+        <div class="leak__hole"><i class="coin">R$</i><i class="coin">R$</i><i class="coin">R$</i><i class="coin">R$</i><i class="drip"></i><i class="drip"></i><span class="leak__label">integração lenta</span></div>
+        <div class="leak__hole"><i class="coin">R$</i><i class="coin">R$</i><i class="coin">R$</i><i class="coin">R$</i><i class="drip"></i><i class="drip"></i><span class="leak__label">procedimento errado</span></div>
+        <div class="leak__hole"><i class="coin">R$</i><i class="coin">R$</i><i class="coin">R$</i><i class="coin">R$</i><i class="drip"></i><i class="drip"></i><span class="leak__label">campanha atrasada</span></div>
+      </div>
+    </div>
+
+    <div class="levers">
+      <article class="lever reveal">
+        <span class="lever__k">Custo de integrar</span>
+        <h3>Cada dia de integração é folha paga sem venda.</h3>
+        <p class="formula">dias economizados × custo do dia × admissões por ano</p>
+      </article>
+      <article class="lever reveal">
+        <span class="lever__k">Perdas</span>
+        <h3>Procedimento mal feito é treinamento que não chegou.</h3>
+        <p class="formula">cada 0,1 p.p. de perda recuperado × sua receita</p>
+      </article>
+      <article class="lever reveal">
+        <span class="lever__k">Velocidade de campanha</span>
+        <h3>Da decisão na matriz à gôndola, cada dia a menos vende antes.</h3>
+        <p class="formula">dias recuperados × campanhas por ano</p>
+      </article>
+    </div>
+
+    <div class="proof">
+      <figure class="proof__img">
+        <div class="curtain"><video data-loop src="assets/video/cocacola.mp4" poster="assets/video/cocacola.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Operadora de fábrica da Coca-Cola lê um QR code no equipamento com o celular"></video></div>
+      </figure>
+      <div class="proof__copy">
+        <p class="proof__num reveal"><span data-count="79">0</span>%</p>
+        <p class="proof__txt reveal">de economia nos custos com treinamento na <b>Coca-Cola</b>, que trocou programas presenciais descontinuados por um Learning Hub digital para os parceiros engarrafadores.</p>
+        <ul class="feat reveal">
+          <li><b>App com a sua marca</b>, offline e com login sem e-mail</li>
+          <li><b>QR code no ponto de uso</b>: no estoque, no equipamento, no provador</li>
+          <li><b>Trilha por cargo, loja e turno</b>, com matrícula automática</li>
+          <li><b>Painel por loja e gestor</b>: quem fez, quem passou, quem ficou para trás</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ATO 5 · VÍDEOS (horizontal) ============ -->
+<section class="hx videos" id="videos" aria-label="Depoimentos em vídeo">
+  <div class="hx-stage videos__stage">
+    <div class="hx-track videos__track">
+      <div class="vp vp--title">
+        <h2>Quem usa,<br><span class="hl">conta.</span></h2>
+        <p class="lede">Três redes, três operações diferentes, o mesmo celular no bolso.</p>
+      </div>
+
+      <article class="vcard" data-vimeo="1197497316" data-hash="e17bc99e38">
+        <div class="vcard__phone"><div class="vcard__frame"><div class="vcard__poster"><img src="assets/logos/c/vivo.png" alt=""></div></div></div>
+        <div class="vcard__meta"><span class="vcard__logo"><img src="assets/logos/c/vivo.png" alt="Vivo"></span><button class="btn btn--ghost vcard__play" type="button">▶ Ouvir com som</button></div>
+      </article>
+
+      <article class="vcard" data-vimeo="1197497314" data-hash="fc4a3faa29">
+        <div class="vcard__phone"><div class="vcard__frame"><div class="vcard__poster"><img src="assets/logos/c/dpaschoal.png" alt=""></div></div></div>
+        <div class="vcard__meta"><span class="vcard__logo"><img src="assets/logos/c/dpaschoal.png" alt="DPaschoal"></span><button class="btn btn--ghost vcard__play" type="button">▶ Ouvir com som</button></div>
+      </article>
+
+      <article class="vcard" data-vimeo="1197497313" data-hash="80c769f22e">
+        <div class="vcard__phone"><div class="vcard__frame"><div class="vcard__poster"><img src="assets/logos/c/chillibeans.png" alt=""></div></div></div>
+        <div class="vcard__meta"><span class="vcard__logo"><img src="assets/logos/c/chillibeans.png" alt="Chilli Beans"></span><button class="btn btn--ghost vcard__play" type="button">▶ Ouvir com som</button></div>
+      </article>
+
+      <div class="vp vp--end">
+        <p class="hp__big">Agora, a conta da <span class="hl">sua</span> rede.</p>
+      </div>
+    </div>
+    <div class="hx-progress" aria-hidden="true"><i></i></div>
+  </div>
+</section>
+
+<!-- ============ ATO 6 · SIMULADOR (vertical) ============ -->
+<section class="sim" id="simulador">
+  <div class="wrap">
+    <div class="sim__head">
+      <h2 data-split>Quanto a sua rede devolve para a loja?</h2>
+      <p class="lede reveal">Mexa nos números da sua operação. Os valores iniciais são do case Novo Atacarejo.</p>
+    </div>
+
+    <div class="sim__body">
+      <form class="sim__form" id="simForm" onsubmit="return false">
+        <label class="field">
+          <span class="field__top"><span>Admissões por ano</span><output id="oAdm">6.000</output></span>
+          <input type="range" id="iAdm" min="100" max="20000" step="100" value="6000">
+        </label>
+        <label class="field">
+          <span class="field__top"><span>Salário médio de admissão</span><output id="oSal">R$ 2.390</output></span>
+          <input type="range" id="iSal" min="1500" max="6000" step="10" value="2390">
+        </label>
+        <label class="field">
+          <span class="field__top"><span>Dias de integração hoje</span><output id="oHoje">7 dias</output></span>
+          <input type="range" id="iHoje" min="1" max="30" step="1" value="7">
+        </label>
+        <label class="field">
+          <span class="field__top"><span>Dias com treinamento no celular</span><output id="oNovo">1 dia</output></span>
+          <input type="range" id="iNovo" min="0" max="30" step="1" value="1">
+        </label>
+        <p class="sim__fine">Custo do dia = salário com encargos estimados em 80%, dividido por 30. Estimativa para conversa, não proposta comercial.</p>
+      </form>
+
+      <div class="sim__out" aria-live="polite">
+        <p class="sim__label">Economia estimada por ano</p>
+        <p class="sim__value" id="vMoney">R$ 5,2 milhões</p>
+        <p class="sim__sub"><b id="vDays">36.000</b> dias de trabalho devolvidos à loja, o mesmo que <b id="vPeople">164</b> pessoas trabalhando o ano inteiro.</p>
+        <div class="tiles" id="tiles" aria-hidden="true"></div>
+        <p class="sim__fine">Cada quadrado = 150 dias de trabalho.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ATO 7 · FECHAMENTO ============ -->
+<section class="close" id="contato">
+  <div class="close__logos" aria-hidden="true">
+    <span><img src="assets/logos/c/novo-atacarejo.png" alt=""></span><span><img src="assets/logos/c/chillibeans.png" alt=""></span><span><img src="assets/logos/c/giraffas.png" alt=""></span><span><img src="assets/logos/c/dpaschoal.png" alt=""></span><span><img src="assets/logos/c/vivo.png" alt=""></span><span><img src="assets/logos/c/msig.png" alt=""></span><span><img src="assets/logos/c/cocacola.png" alt=""></span><span><img src="assets/logos/c/unilever.png" alt=""></span><span><img src="assets/logos/c/ambev.png" alt=""></span>
+  </div>
+  <div class="wrap close__inner">
+    <h2 data-split>Treine onde o colaborador está.<br><span class="hl">No celular.</span></h2>
+    <a class="btn btn--accent btn--xl reveal" href="https://enabley.com.br/" target="_blank" rel="noopener">Agendar demonstração</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <span class="foot__brand"><img src="assets/logos/enabley.webp" alt="Enabley" width="120" height="38"></span>
+  <p>Plataforma de treinamento, conhecimento e comunicação para a linha de frente. Desde 2006.</p>
+  <p class="foot__fine">Números de case informados pelos clientes à Enabley. Rotatividade: FecomercioSP, varejo formal do Estado de São Paulo, acumulado até jun/2025.</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="js/site.js"></script>
+</body>
+</html>
