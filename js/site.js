@@ -257,13 +257,20 @@
   loops.forEach(function (v) { v.muted = true; });
   if (RM) loops.forEach(function (v) { v.removeAttribute('autoplay'); v.pause(); });
   else {
+    var visible = [];
+    function tryPlay(v) { if (!v.paused) return; var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); }
     var vio = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
-        if (e.isIntersecting) { var pr = e.target.play(); if (pr && pr.catch) pr.catch(function () {}); }
-        else e.target.pause();
+        var i = visible.indexOf(e.target);
+        if (e.isIntersecting) { if (i < 0) visible.push(e.target); tryPlay(e.target); }
+        else { if (i > -1) visible.splice(i, 1); e.target.pause(); }
       });
     }, { rootMargin: '200px' });
     loops.forEach(function (v) { vio.observe(v); });
+    // iPhone em economia de bateria recusa autoplay até um gesto; touchend conta como gesto, touchstart não.
+    ['touchend', 'pointerdown', 'click', 'scroll'].forEach(function (ev) {
+      window.addEventListener(ev, function () { visible.forEach(tryPlay); }, { passive: true });
+    });
   }
 
   /* Dinheiro vazando: moedas só caem com a seção na tela */
@@ -273,7 +280,7 @@
   /* ------------------------------------------------------------------
      Sem GSAP ou com movimento reduzido: estado final, rolagem nativa.
      ------------------------------------------------------------------ */
-  if (!hasGSAP || RM) {
+  if (!hasGSAP) {
     renderChat(1);
     $$('.lp--end').forEach(function (n) { n.classList.add('play'); });
     $$('.lcard').forEach(function (c) { c.classList.add('live'); });
@@ -284,13 +291,25 @@
     return;
   }
 
+  if (RM) {
+    $$('.reveal').forEach(function (n) { n.classList.add('in'); });
+    $$('[data-count]').forEach(function (n) { n.textContent = n.dataset.count; });
+    $$('.lcard').forEach(function (c) { c.classList.add('live'); });
+  }
+
   gsap.registerPlugin(ScrollTrigger);
   ScrollTrigger.config({ ignoreMobileResize: true });
   var mobile = window.matchMedia('(max-width: 767px)').matches;
+  var touch = ScrollTrigger.isTouch === 1 || window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+  var SCRUB = touch ? 0.6 : 1;
 
-  /* Scroll suave (desktop). Toque continua nativo. */
+  /* Celular: o scroll roda na thread do JS, então a barra de endereço não
+     treme os trechos presos e o dedo não "pula" um trecho horizontal inteiro. */
+  if (touch) ScrollTrigger.normalizeScroll(true);
+
+  /* Scroll suave só com mouse/trackpad. */
   var lenis = null;
-  if (window.Lenis) {
+  if (window.Lenis && !touch && !RM) {
     lenis = new Lenis({ lerp: 0.085, smoothWheel: true });
     lenis.on('scroll', ScrollTrigger.update);
     gsap.ticker.add(function (t) { lenis.raf(t * 1000); });
@@ -312,8 +331,8 @@
   /* ------------------------------------------------------------------
      Abertura (no carregamento, não na rolagem)
      ------------------------------------------------------------------ */
-  var intro = gsap.timeline({ delay: 0.15 });
-  intro
+  var intro = gsap.timeline({ delay: 0.15, paused: RM });
+  if (!RM) intro
     .from('.hero__title .line > span', { yPercent: 115, duration: 1.2, ease: 'expo.out', stagger: 0.12 })
     .from('.hp--intro .eyebrow, .hp--intro .hero__lede', { y: 24, opacity: 0, duration: 0.9, ease: 'expo.out', stagger: 0.1 }, 0.25)
     .from('#phone', { y: 220, opacity: 0, rotateX: 28, rotateZ: 6, duration: 1.6, ease: 'expo.out' }, 0.1)
@@ -330,7 +349,7 @@
   var hero = gsap.timeline({
     defaults: { ease: 'none' },
     scrollTrigger: {
-      trigger: '#hero', start: 'top top', pin: true, scrub: 1, invalidateOnRefresh: true, anticipatePin: 1,
+      trigger: '#hero', start: 'top top', pin: true, scrub: SCRUB, invalidateOnRefresh: true, anticipatePin: 1,
       end: function () { return '+=' + Math.round(heroDist() * 1.7 + window.innerHeight * 0.5); },
       onToggle: axis
     },
@@ -357,7 +376,7 @@
     var tl = gsap.timeline({
       defaults: { ease: 'none' },
       scrollTrigger: {
-        trigger: sec, start: 'top top', pin: true, scrub: 1, invalidateOnRefresh: true, anticipatePin: 1,
+        trigger: sec, start: 'top top', pin: true, scrub: SCRUB, invalidateOnRefresh: true, anticipatePin: 1,
         end: function () { return '+=' + Math.round(dist() * (opts.speed || 1.15) + window.innerHeight * 0.3); },
         onToggle: function (self) { axis(self); if (opts.onToggle) opts.onToggle(self); }
       }
@@ -401,7 +420,7 @@
       if (r.right < -vw * 0.5 || r.left > vw * 1.5) return;
       var d = clamp(((r.left + r.width / 2) - vw / 2) / vw, -1, 1);
       var ad = Math.abs(d);
-      c.style.transform = 'translateZ(' + (-ad * 260).toFixed(1) + 'px) rotateY(' + (-d * 42).toFixed(2) + 'deg) rotateZ(' + (d * 3).toFixed(2) + 'deg)';
+      c.style.transform = 'translateZ(' + (-ad * (mobile ? 140 : 260)).toFixed(1) + 'px) rotateY(' + (-d * (mobile ? 26 : 42)).toFixed(2) + 'deg) rotateZ(' + (d * 3).toFixed(2) + 'deg)';
       c.style.opacity = (1 - ad * 0.35).toFixed(3);
       lcardLogos[i].style.transform = 'translateX(' + (d * -4).toFixed(1) + '%) scale(' + (1 - ad * 0.06).toFixed(3) + ')';
       if (ad < 0.42) c.classList.add('live');
@@ -454,7 +473,7 @@
     });
     h.textContent = '';
     h.appendChild(out);
-    gsap.from($$('.wd > span', h), {
+    if (!RM) gsap.from($$('.wd > span', h), {
       yPercent: 110, rotate: 4, duration: 1.1, ease: 'expo.out', stagger: 0.045,
       scrollTrigger: { trigger: h, start: 'top 82%', once: true }
     });
@@ -473,7 +492,7 @@
     io.observe(n);
   });
 
-  $$('[data-count]').forEach(function (n) {
+  if (!RM) $$('[data-count]').forEach(function (n) {
     var end = +n.dataset.count, o = { v: 0 };
     ScrollTrigger.create({
       trigger: n, start: 'top 85%', once: true,
@@ -481,20 +500,20 @@
     });
   });
 
-  gsap.fromTo('.pain__frame video', { yPercent: -10 }, { yPercent: 0, ease: 'none', scrollTrigger: { trigger: '.pain__grid', start: 'top bottom', end: 'bottom top', scrub: true } });
+  if (!RM) gsap.fromTo('.pain__frame video', { yPercent: -10 }, { yPercent: 0, ease: 'none', scrollTrigger: { trigger: '.pain__grid', start: 'top bottom', end: 'bottom top', scrub: true } });
 
-  gsap.timeline({ scrollTrigger: { trigger: '.proof__img', start: 'top 85%', end: 'top 30%', scrub: 1 } })
+  if (!RM) gsap.timeline({ scrollTrigger: { trigger: '.proof__img', start: 'top 85%', end: 'top 30%', scrub: 1 } })
     .to('.curtain', { clipPath: 'inset(0 0 0% 0)', ease: 'none' }, 0)
     .to('.curtain video', { scale: 1, ease: 'none' }, 0);
 
   gsap.fromTo('.leak__fill', { scaleX: 1 }, { scaleX: 0.34, ease: 'none', scrollTrigger: { trigger: '.leak', start: 'top 85%', end: 'bottom 15%', scrub: 1 } });
 
-  gsap.fromTo('.lever', { y: 0 }, { y: function (i) { return (i - 1) * -40; }, ease: 'none', scrollTrigger: { trigger: '.levers', start: 'top bottom', end: 'bottom top', scrub: true } });
+  if (!RM) gsap.fromTo('.lever', { y: 0 }, { y: function (i) { return (i - 1) * -40; }, ease: 'none', scrollTrigger: { trigger: '.levers', start: 'top bottom', end: 'bottom top', scrub: true } });
 
   ScrollTrigger.create({ trigger: '#simulador', start: 'top 70%', once: true, onEnter: sim.arm });
   ScrollTrigger.create({ trigger: '#simulador', start: 'top 40px', end: 'bottom 40px', toggleClass: { targets: root, className: 'on-light' } });
 
-  gsap.fromTo('.close__logos', { yPercent: -35, rotate: -14 }, { yPercent: -65, rotate: -4, ease: 'none', scrollTrigger: { trigger: '.close', start: 'top bottom', end: 'bottom top', scrub: true } });
+  if (!RM) gsap.fromTo('.close__logos', { yPercent: -35, rotate: -14 }, { yPercent: -65, rotate: -4, ease: 'none', scrollTrigger: { trigger: '.close', start: 'top bottom', end: 'bottom top', scrub: true } });
 
   function refresh() { ScrollTrigger.refresh(); }
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(refresh);
